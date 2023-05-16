@@ -4,18 +4,26 @@ from tkinter import ttk
 
 
 window = tk.Tk()
-window.geometry("305x100")
-entry1 = tk.Entry(window,width=10)
-entry2 = tk.Entry(window,width=10)
-entry3 = tk.Entry(window,width=15)
+window.geometry("420x30")
+entry1 = tk.Entry(window,width=17)
+entry2 = tk.Entry(window,width=17)
+entry3 = tk.Entry(window,width=30)
 label1 = tk.Label(window,text="x")
-label2 = tk.Label(window,text="=",relief=GROOVE)
+label2 = tk.Button(window,text="=",relief=GROOVE)
 
-entry1.grid(row = 1, column = 1, columnspan=3)
-entry2.grid(row = 1, column = 5, columnspan=3)
-entry3.grid(row = 1, column = 12, columnspan=3)
-label1.grid(row = 1, column = 4, columnspan=1)
-label2.grid(row = 1, column = 10, columnspan=1)
+entry1.pack(side=LEFT)
+label1.pack(side=LEFT)
+entry2.pack(side=LEFT)
+label2.pack(side=LEFT)
+entry3.pack(side=LEFT)
 
+def click(e):
+    n1 = int(entry1.get())
+    n2 = int(entry2.get())
+    sum = n1 * n2
+    entry3.delete(0,tk.END)
+    entry3.insert(0,sum)
+
+label2.bind("<Button-1>",click)
 window.mainloop()
 
